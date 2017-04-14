@@ -177,7 +177,7 @@ class GetDetail extends CommonJob {
         yield postNumber.save()
         throw e
       }
-    })// END OF coHandler
+    }) // END OF coHandler
   } // END OF START
 
   dependency () {
