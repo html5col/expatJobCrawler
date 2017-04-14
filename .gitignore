@@ -13,7 +13,6 @@ results
 src/scripts
 
 npm-debug.log
-node_modules
 .eslintrc.js
 config.test.js
 config.production.js
