@@ -10,6 +10,8 @@ const keys = Object.keys(crawlers)// instance's name
 function startJob (job) {
   return coHandler(function * () {
     yield job.start()
+  }).catch(function (e) {
+    throw new Error('error: ' + e)
   })
 }
 

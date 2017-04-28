@@ -12,6 +12,7 @@
     "iconv-lite": "^0.4.15",
     "mongoose": "^4.7.1",
     "nightmare": "^2.10.0",
+    "node-schedule": "1.2.1",
     "request": "^2.79.0",
     "validator": "7.0.0"
   },

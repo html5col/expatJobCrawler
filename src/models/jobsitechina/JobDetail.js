@@ -19,9 +19,9 @@ var jobSchema = new Schema({
   category: String,
 
  // content: {type: String},
-  title: {type: String},
-  searchQuery: {type: String}, // for search purpose only
-  postingDate: {type: Number}, // millionseconds
+  title: {type: String, required: true},
+  searchQuery: {type: String, required: true}, // for search purpose only
+  postingDate: {type: Number, required: true}, // millionseconds
   expireDate: {type: Number},
 
   companyName: {type: String},
@@ -30,6 +30,7 @@ var jobSchema = new Schema({
   positionNumber: {type: String}, // how many teacher needed
   salary: {type: String, default: 'Negotiable'},
   welfare: {type: String},
+
   requirement: String, // requirement
   responsibility: {type: String},
   phone: {type: String},
@@ -42,8 +43,9 @@ var jobSchema = new Schema({
   //     }, 'invalid email'
   //   ]
   // },
+
   officialSite: String
-})
+}, {timestamps: true})
 
 // jobSchema.methods.time = time => {
 //   return moment(time).format('L')
@@ -60,7 +62,10 @@ jobSchema.methods.processJob = job => {
     website: job.website,
 
     url: job.url,
-    account: job.account,
+    account: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
     country: job.country,
     province: job.province,
     city: job.city,
@@ -90,9 +95,9 @@ jobSchema.methods.processJob = job => {
 
 let JobDetail
 try {
-  JobDetail = mongoose.model('JobDetail')
+  JobDetail = mongoose.model('Jobsite_JobDetail')
 } catch (error) {
-  JobDetail = mongoose.model('JobDetail', jobSchema)
+  JobDetail = mongoose.model('Jobsite_JobDetail', jobSchema)
 }
 
 // make this available to our users in our Node applications

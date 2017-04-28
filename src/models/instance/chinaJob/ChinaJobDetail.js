@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const moment = require('moment')
 var jobSchema = new Schema({
-  location: String, // it's for the system not for the job content
+  // location: String, // it's for the system not for the job content
   website: {type: String},
 
   url: String,
@@ -92,10 +92,11 @@ jobSchema.methods.processJob = job => {
 
 let JobDetail
 try {
-  JobDetail = mongoose.model('JobDetail')
+  JobDetail = mongoose.model('ChinaJob_JobDetail')
 } catch (error) {
-  JobDetail = mongoose.model('JobDetail', jobSchema)
+  JobDetail = mongoose.model('ChinaJob_JobDetail', jobSchema)
 }
 
 // make this available to our users in our Node applications
 module.exports = JobDetail
+

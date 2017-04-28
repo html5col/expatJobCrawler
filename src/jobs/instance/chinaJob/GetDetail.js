@@ -5,7 +5,7 @@ const {format} = require('util')
 
 const coHandler = require('src/common/co-handler')
 const PostNumber = require('src/models/instance/chinaJob/ChinaJobPostNumber')
-const Detail = require('src/models/JobDetail')
+const Detail = require('src/models/instance/chinaJob/ChinaJobDetail')
 const CommonJob = require('src/jobs/instance/chinaJob/common/CommonJob')
 const ERROR = require('src/consts/errors.js')
 const JobConst = require('src/consts/chinaJob')
@@ -70,6 +70,8 @@ class GetDetail extends CommonJob {
             const done = yield self.dependencyDone()
 
             if (done) {
+              let chinaJobDetails = Detail.find({}, {'_id': 0, 'updatedAt': 0, 'createdAt': 0}).cursor()
+              yield self.merge(chinaJobDetails)
               yield self.finish()
               break
             } else {

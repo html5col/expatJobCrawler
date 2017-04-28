@@ -6,7 +6,7 @@ const {format} = require('util')
 const JobConst = require('src/consts/jobsitechina')
 const coHandler = require('src/common/co-handler')
 const Link = require('src/models/jobsitechina/Link')
-const LinkDetail = require('src/models/JobDetail')
+const LinkDetail = require('src/models/jobsitechina/JobDetail')
 const CommonJob = require('src/jobs/jobsitechina/common/CommonJob')
 const ERROR = require('src/consts/errors.js')
 
@@ -69,8 +69,12 @@ class Detail extends CommonJob {
             const done = yield self.dependencyDone()
 
             if (done) {
-              yield self.finish()
+              console.log('above merge')
+              let jobSiteChinaDetails = LinkDetail.find({}, {'updatedAt': 0, 'createdAt': 0}).cursor()
+              console.log('jobSiteChinadETAIL url ' + jobSiteChinaDetails.next().url)
+              yield self.merge(jobSiteChinaDetails)
               debug(`Finish crawling one job: ${self.config.website}, we'll wait for another...`)
+              yield self.finish()
               break
             } else {
               continue

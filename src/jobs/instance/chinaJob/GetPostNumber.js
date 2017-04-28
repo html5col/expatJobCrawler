@@ -25,6 +25,7 @@ class GetPostNumber extends CommonJob {
     return coHandler(function * () {
       switch (self.config.strategy) {
         case 'restart':
+          
           yield PostNumber.remove({
             website: self.config.website
           })
@@ -110,7 +111,7 @@ class GetPostNumber extends CommonJob {
           let that = $(this)
           coHandler(function * () {
             let title = that.text().trim()
-            console.log('title' + title)
+            // console.log('title' + title)
             let hrefString = that.attr('href').trim()
             let number = hrefString.match(/javascript:viewteacher\('(\d+)'\)/)[1]
 

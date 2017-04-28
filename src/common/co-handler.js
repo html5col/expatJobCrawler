@@ -6,6 +6,6 @@ module.exports = function (handle) {
   return co(handle).catch(function (err) {
     // /logger.error(err)
     throw new Error('error in coHandler '+err)
-    process.exit(-1)
+    // process.exit(-1)
   })
 }
