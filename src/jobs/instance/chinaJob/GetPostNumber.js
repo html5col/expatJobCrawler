@@ -12,7 +12,7 @@ const ERROR = require('src/consts/errors.js')
 
 const JobConst = require('src/consts/chinaJob')
 // const JobCountService = require('src/services/chinaJob/CountService')
-const JobCount = require('src/models/instance/chinajob/Count')
+const JobCount = require('src/models/instance/chinaJob/Count')
 class GetPostNumber extends CommonJob {
   constructor (config) {
     super(config)
