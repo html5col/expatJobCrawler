@@ -10,7 +10,6 @@ lib-cov
 pids
 logs/
 results
-src/scripts
 
 npm-debug.log
 .eslintrc.js

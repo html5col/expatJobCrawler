@@ -1,0 +1,1 @@
+NODE_ENV='production' PORT=8888 MongoPort=27017 dbUsername=frank25185 dbPassword=franklee548331198 node index.js
