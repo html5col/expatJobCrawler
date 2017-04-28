@@ -9,7 +9,7 @@ module.exports = {
     port: mongoPort,
     // uri: `mongodb://60.205.219.251:${mongoPort}/jobData`, // ?authSource=groupForum
     uri: `mongodb://localhost:8000:27017/jobData`,
-    dbname: 'jobData',
+    dbname: 'group',
     options: {
       user: dbUsername || '',
       pass: dbPassword || '',
