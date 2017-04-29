@@ -2,7 +2,7 @@ var schedule = require('node-schedule')
 // const Crawler = require('./')
 console.log('scheduling...')
 //let sched = '0 14 * * *'
-let sched = '48 15 * * *'
+let sched = '30 11 * * *'
 // let env = process.env.NODE_ENV || 'test'
 // if (env === 'test') {
 //   sched = '1 * * * * * *'
