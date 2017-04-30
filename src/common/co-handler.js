@@ -5,7 +5,7 @@ let co = require('co')
 module.exports = function (handle) {
   return co(handle).catch(function (err) {
     // /logger.error(err)
-    throw new Error('error in coHandler '+err)
+    throw new Error('error in coHandler '+ err.stack ? err.stack : err.message)
     // process.exit(-1)
   })
 }
