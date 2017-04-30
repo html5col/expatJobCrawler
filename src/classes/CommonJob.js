@@ -107,12 +107,11 @@ class CommonJob {
     return coHandler(function * () {
       const crawler = yield Crawler.findOne({
         website: self.config.website
-       // location: self.config.location
       })
      .exec()
 
       if (!crawler) {
-        throw new Error(format(SfdaErrors.CAN_NOT_FIND_CRAWLER_ON_DATABASE, self.config.website, self.config.website))
+        throw new Error(format(SfdaErrors.CAN_NOT_FIND_CRAWLER_ON_DATABASE, self.config.website, self.config.location))
       }
 
       return Promise.resolve(crawler)
