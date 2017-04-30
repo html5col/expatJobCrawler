@@ -175,6 +175,7 @@ class GetDetail extends CommonJob {
           }
         }
       } catch (e) {
+        console.log('error: ' + e)
         postNumber.crawlStatus = JobConst.CRAWL_STATUS[0]
         yield postNumber.save()
         throw e
