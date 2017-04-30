@@ -33,7 +33,7 @@ module.exports = {
   'crawlers': {
     'chinajob': {
       'run': true,
-      'strategy': 'continue',
+      'strategy': 'restart',
       'website': 'chinajob.com',
       'location': 'job1',
       'jobsConfig': {
@@ -58,7 +58,7 @@ module.exports = {
     },
     'jobSiteChina': {
       'run': true,
-      'strategy': 'continue',
+      'strategy': 'restart',
       'website': 'jobsitechina.com',
       'location': 'job2',
       'jobsConfig': {

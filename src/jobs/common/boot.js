@@ -14,7 +14,7 @@ class Boot {
     return coHander(function * () {
       switch (self.config.strategy) {
         case 'restart': {
-          yield Crawler.remove({}).exec()
+          yield Crawler.remove({website: self.config.website}).exec()
           const crawler = new Crawler({
             website: self.config.website,
             jobStatus: self.config.jobStatus
