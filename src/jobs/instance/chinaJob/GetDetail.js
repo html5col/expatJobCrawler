@@ -61,18 +61,22 @@ class GetDetail extends CommonJob {
           // postNumber = yield NumberService.getOneUncrawledAndUpdateStatus(self.config.website)
           postNumber = yield PostNumber.findOne({
             website: self.config.website,
-            crawlStatus: JobConst.CRAWL_STATUS[0] })
+            crawlStatus: JobConst.CRAWL_STATUS[0]
+          })
             .exec()
 
+          
          // 找不到未爬取的连接，有两种可能性。1：目前已有的连接已经爬取完毕，但还会有后续的连接被插入等待爬取。2：所有连接爬取完毕，不会有后续的连接等待被插入。
           if (!postNumber) {
-            console.log(`no postNuber existing...`)
+            console.log(`no postNumber existing...`)
             const done = yield self.dependencyDone()
 
+            // console.log('done: ' + postNumber)
+
             if (done) {
+              yield self.finish()
               let chinaJobDetails = Detail.find({}, {'_id': 0, 'updatedAt': 0, 'createdAt': 0}).cursor()
               yield self.merge(chinaJobDetails)
-              yield self.finish()
               break
             } else {
               continue

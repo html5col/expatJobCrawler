@@ -70,11 +70,12 @@ class Detail extends CommonJob {
 
             if (done) {
               console.log('above merge')
+              yield self.finish()
               let jobSiteChinaDetails = LinkDetail.find({}, {'updatedAt': 0, 'createdAt': 0}).cursor()
               console.log('jobSiteChinadETAIL url ' + jobSiteChinaDetails.next().url)
               yield self.merge(jobSiteChinaDetails)
               debug(`Finish crawling one job: ${self.config.website}, we'll wait for another...`)
-              yield self.finish()
+              
               break
             } else {
               continue
