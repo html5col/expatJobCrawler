@@ -86,9 +86,16 @@ class Detail extends CommonJob {
           yield linkJob.save()
 
           let url = linkJob.link
-
           debug(`linkJob: ${url}`)
  
+          //in case detail that is going to be crawled exists in the main detail model
+          const DetailModel = require('src/models/JobDetail')
+          let detailExistInMainDetailModel = yield DetailModel.findOne({url: url}).exec();
+          if(detailExistInMainDetailModel) {
+            continue
+          }
+
+          
           const html = yield self.getHTML(url, 'postDetail')
           // console.log(`html in detail: ${html}`)
           let $ = cheerio.load(html)

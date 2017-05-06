@@ -83,13 +83,21 @@ class GetDetail extends CommonJob {
             }
           }
 
+          let url = format(self.config.detailPageBase, postNumber.number)
+          const DetailModel = require('src/models/JobDetail')
+          let detailExistInMainDetailModel = yield DetailModel.findOne({url: url}).exec();
+          if(detailExistInMainDetailModel) {
+            continue
+          }
+
+
          // yield postNumber.update({}, {crawlStatus: JobConst.CRAWL_STATUS[1]}).exec()
           postNumber.crawlStatus = JobConst.CRAWL_STATUS[1]
           yield postNumber.save()
           // debug('postNumber' + postNumber.number)
           console.log(`postNumber: ${postNumber}`)
 
-          let url = format(self.config.detailPageBase, postNumber.number)
+          
           console.log('detail page url: ' + url)
           let html = yield self.getHTML(url, 'jobPost')
 

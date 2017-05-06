@@ -12,7 +12,7 @@ if (env === 'test') {
     }
     console.log('connnected')
   })
-} else if (env === 'production') {
+} else{
   mongoose.connect(`mongodb://${mongodb.options.user}:${mongodb.options.pass}@60.205.219.251:${mongodb.port}/${mongodb.dbname}`, function (err) {
     if (err) {
       console.error(`Mongoose default connection error: ${err.stack}`)
