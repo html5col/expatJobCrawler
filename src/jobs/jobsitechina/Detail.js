@@ -95,7 +95,6 @@ class Detail extends CommonJob {
             continue
           }
 
-          
           const html = yield self.getHTML(url, 'postDetail')
           // console.log(`html in detail: ${html}`)
           let $ = cheerio.load(html)
