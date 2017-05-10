@@ -7,7 +7,7 @@ let env = process.env.NODE_ENV || 'test'
 if (env === 'test') {
   sched = '* 11 * * *'
 }else if(env === 'chinaJob'){
-  sched = '0 5 * * *'
+  sched = '56 14 * * *'
 }
 
 var j = schedule.scheduleJob(sched, function () {

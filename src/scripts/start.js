@@ -1,1 +1,2 @@
-NODE_ENV='production' PORT=8888 MongoPort=27017 dbUsername=frank25185 dbPassword=franklee548331198 node index.js
+NODE_ENV=chinaJob MongoPort=27017 dbUsername=frank25184 dbPassword=franklee548331198 forever start --spinSleepTime 10000 schedule.js
+NODE_ENV=jobSiteChina MongoPort=27017 dbUsername=frank25184 dbPassword=franklee548331198 forever start --spinSleepTime 10000 schedule.js
